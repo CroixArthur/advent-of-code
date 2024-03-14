@@ -1,17 +1,50 @@
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
+fn try_get_alpha(line: &str) -> Option<char> {
+    let numbers = HashMap::from([
+        ("one", '1'),
+        ("two", '2'),
+        ("three", '3'),
+        ("four", '4'),
+        ("five", '5'),
+        ("six", '6'),
+        ("seven", '7'),
+        ("eight", '8'),
+        ("nine", '9'),
+    ]);
+
+    for el in numbers {
+        if line.starts_with(el.0) {
+            return Some(el.1)
+        }
+    }
+    None
+}
+
 fn process_line(line: &str, sum: &mut i32) -> () {
     let mut first: Option<char> = None;
     let mut last: char = '0';
+    let mut alpha;
+    let mut c: char;
 
-    for char in line.chars() {
-        if char.is_numeric() {
-            last = char;
-            if first.is_none() {
-                first = Some(char);
+    for i in 0..line.len() {
+        alpha = try_get_alpha(&line[i..]);
+
+        c = line.chars().nth(i).unwrap();
+        if alpha.is_none() && c.is_numeric() {
+            alpha = Some(c)
+        }
+        match alpha {
+            Some(f) => {
+                last = f;
+                if first.is_none() {
+                    first = Some(f);
+                }
             }
+            None => (),
         }
     }
     println!("Result {:?} {}", first, last);
@@ -44,10 +77,10 @@ fn read_file(path: &str) -> Result<i32, Box<dyn std::error::Error>> {
 }
 
 fn main() {
-    let res = read_file("src/1input.txt");
+    let res = read_file("src/2input.txt");
 
     match res {
-        Ok(yes) => println!("Day1: {yes}"),
-        Err(err) => println!("Day1: {err}"),
+        Ok(yes) => println!("Day2: {yes}"),
+        Err(err) => println!("Day2: {err}"),
     }
 }
