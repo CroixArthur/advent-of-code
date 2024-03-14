@@ -1,7 +1,6 @@
 use std::collections::HashMap;
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+
+use crate::utility;
 
 fn try_get_alpha(line: &str) -> Option<char> {
     let numbers = HashMap::from([
@@ -56,18 +55,10 @@ fn process_line(line: &str, sum: &mut i32) -> () {
     }
 }
 
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
-}
-
 fn read_file(path: &str) -> Result<i32, Box<dyn std::error::Error>> {
     let mut sum: i32 = 0;
 
-    if let Ok(lines) = read_lines(path) {
+    if let Ok(lines) = utility::get_file_lines(path) {
         for line in lines.flatten() {
             println!("{}", line);
             process_line(&line, &mut sum);
@@ -78,10 +69,10 @@ fn read_file(path: &str) -> Result<i32, Box<dyn std::error::Error>> {
 }
 
 pub fn run() {
-    let res = read_file("src/2input.txt");
+    let res = read_file("src/inputs/1-2input.txt");
 
     match res {
-        Ok(yes) => println!("Day2: {yes}"),
-        Err(err) => println!("Day2: {err}"),
+        Ok(yes) => println!("Day1-2: {yes}"),
+        Err(err) => println!("Day12: {err}"),
     }
 }
