@@ -8,6 +8,23 @@ where
     Ok(io::BufReader::new(file).lines())
 }
 
+pub fn get_file_array(filepath: &str) -> Result<Vec<Vec<char>>, std::io::Error> {
+  let mut content: Vec<Vec<char>> = vec![];
+  let lines = get_file_lines(filepath);
+  
+  match lines {
+    Ok(value) => {
+      for line in value {
+        if let Ok(res) = line {
+          content.push(res.chars().collect())
+        }
+      }
+    }
+    Err(e) => return Err(e)
+  }
+  Ok(content)
+}
+
 pub fn get_numbers(str: &str) -> Result<Vec<i32>, std::num::ParseIntError> {
   let mut numbers: Vec<i32> = vec![];
   let mut number = String::new();
