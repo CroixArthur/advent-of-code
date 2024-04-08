@@ -1,3 +1,4 @@
+/*
 use std::collections::{HashMap, HashSet};
 
 use crate::utility;
@@ -136,4 +137,9 @@ pub fn run() {
   get_possible_outcomes(&map);
   // println!("Steps: {}", follow_instructions(&values, instructions));
   // println!("Steps: {}", follow_instructions(&map, first_val, instructions));
+}
+*/
+
+pub fn run() {
+  
 }
