@@ -72,3 +72,9 @@ pub fn get_numbers(str: &str) -> Result<Vec<i32>, std::num::ParseIntError> {
   }
   return Ok(numbers);
 }
+
+pub fn display_map(map: &Vec<Vec<char>>) {
+  for line in map {
+    println!("{:?}", line);
+  }
+}
