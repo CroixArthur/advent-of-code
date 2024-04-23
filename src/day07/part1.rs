@@ -81,7 +81,7 @@ fn get_sorted_hands<'a>(sorted: &mut Vec<(i8, &'a str, i32)>, hands: &'a Vec<Vec
 }
 
 pub fn run() {
-  let filepath = "src/inputs/7input.txt";
+  let filepath = "src/input.txt";
   let mut content: Vec<Vec<String>> = vec![];
   let mut sorted_hands: Vec<(i8, &str, i32)> = vec![];
   let mut sum = 0;

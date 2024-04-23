@@ -30,6 +30,9 @@ fn get_card_occurences(hand: &str) -> Vec<(char, i8)> {
       known_chars.push(card);
     }
   }
+  if card_occurences.len() == 1 {
+    return card_occurences;
+  }
   for (i, occ) in card_occurences.iter().enumerate() {
     if occ.0 == 'J' {
       joker_occ = occ.1;
@@ -105,7 +108,7 @@ fn get_sorted_hands<'a>(sorted: &mut Vec<(i8, &'a str, i32)>, hands: &'a Vec<Vec
 }
 
 pub fn run() {
-  let filepath = "src/inputs/7input.txt";
+  let filepath = "src/input.txt";
   let mut content: Vec<Vec<String>> = vec![];
   let mut sorted_hands: Vec<(i8, &str, i32)> = vec![];
   let mut sum = 0;
@@ -117,7 +120,6 @@ pub fn run() {
     }
   }
   get_sorted_hands(&mut sorted_hands ,&content);
-  println!("{:#?}", sorted_hands);
   for i in 0..sorted_hands.len() {
     sum += sorted_hands[i].2 * (i as i32 + 1);
   }

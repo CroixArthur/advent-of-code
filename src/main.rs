@@ -9,6 +9,7 @@ pub mod day08;
 pub mod day09;
 pub mod day10;
 pub mod day11;
+pub mod day12;
 pub mod day24;
 pub mod utility;
 
@@ -23,12 +24,13 @@ fn main() {
   // crate::day05::part2::run();
   // crate::day06::part2::run();
   // crate::day07::part1::run();
-  // crate::day07::part2::run();
+  crate::day07::part2::run();
   // crate::day08::part1::run();
   // crate::day09::part1::run();
   // crate::day09::part2::run();
   // crate::day10::part2::run();
   // crate::day11::part1::run();
-  crate::day11::part2::run();
+  // crate::day11::part2::run();
+  // crate::day12::part1::run(args[1].as_str());
   // crate::day24::part1::run();
 }
