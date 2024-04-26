@@ -24,8 +24,9 @@ fn main() {
   // crate::day05::part2::run();
   // crate::day06::part2::run();
   // crate::day07::part1::run();
-  crate::day07::part2::run();
+  // crate::day07::part2::run();
   // crate::day08::part1::run();
+  crate::day08::part2::run();
   // crate::day09::part1::run();
   // crate::day09::part2::run();
   // crate::day10::part2::run();
